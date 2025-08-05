@@ -1,0 +1,861 @@
+/* === Root Color Variables === */
+:root {
+  --primary-color: #2c3e91;       /* Royal Blue */
+  --primary-dark: #1a2466;
+  --secondary-color: #f0f0f0;     /* Light Grey */
+  --text-color: #333333;
+  --background-color: #ffffff;
+}
+
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* === Header / Navigation === */
+.site-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-header h1 {
+  float: left;
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar li {
+  margin-left: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--primary-dark);
+}
+
+/* === Hero Section === */
+.hero {
+  background: linear-gradient(rgba(44, 62, 145, 0.7), rgba(44, 62, 145, 0.7)), 
+              url('https://source.unsplash.com/1600x900/?global,trade') no-repeat center center/cover;
+  color: white;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+/* === CTA Buttons === */
+.cta-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: #555;
+}
+
+.btn-secondary:hover {
+  background-color: #333;
+}
+
+/* === Sections (About, Services, etc.) === */
+.section {
+  padding: 80px 20px;
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.section:nth-child(even) {
+  background-color: var(--secondary-color);
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.section p, .section ul {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  margin: 10px 0;
+}
+
+/* === Footer === */
+footer {
+  background: var(--secondary-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+/* === Animations on Scroll === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animated.visible {
+  opacity: 1;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+  background-color: var(--secondary-color);
+  padding: 60px 40px;
+  border-radius: 8px;
+}
+
+.contact-info h2 {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.contact-form form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+}
+
+.contact-form .form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.contact-btn {
+  width: 100%;
+  background-color: #2c2a38;
+  border: none;
+  color: white;
+  padding: 15px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #1b1a24;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .contact-btn {
+    font-size: 14px;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 15px;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+.about-highlights {
+  background-color: #fff;
+  padding: 30px;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.about-highlights h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.about-highlights ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-highlights li {
+  font-size: 16px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* — Why Choose Us Card Grid — */
+.about-highlights-grid h3 {
+  font-size: 32px;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.highlight-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.highlight-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.highlight-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  color: var(--primary-color);
+}
+
+.highlight-card h4 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.highlight-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .highlight-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* — About Us Card Styling — */
+.about-text {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-text:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+.about-text h2 {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-text p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-color);
+  text-align: justify;
+}
+
+/* — Two‑column split with divider — */
+.about-why {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
+  margin-top: 40px;
+  padding: 0 10px;
+}
+
+/* vertical line down the center */
+.about-why::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: #ccc;
+  transform: translateX(-50%);
+}
+
+/* column padding so text doesn’t butt up against the divider */
+.about-intro,
+.why-choose {
+  padding: 0 20px;
+}
+
+/* About Us styling */
+.about-intro h2 {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-intro p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-color);
+  text-align: justify;
+}
+
+/* Why Choose Us styling */
+.why-choose h3 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.why-choose ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.why-choose li {
+  margin-bottom: 16px;   /* tighten space */
+  padding-bottom: 16px;  /* tighten space */
+  border-bottom: 1px solid #ddd;
+}
+
+.why-choose li:last-child {
+  border: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.why-choose strong {
+  display: block;
+  font-size: 18px;
+  color: var(--text-color);
+  margin-bottom: 6px;    /* tighten space */
+}
+
+.why-choose p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* ensure equal-height columns */
+.about-why > * {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .about-why {
+    display: block;
+    padding: 0;
+  }
+  .about-why::before { display: none; }
+  .about-intro, .why-choose {
+    padding: 0;
+    margin-bottom: 30px;
+  }
+}
+
+/* — Hero Enhancements — */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 0 20px;
+  background: url('https://source.unsplash.com/1600x900/?global,trade') center/cover no-repeat fixed;
+  color: white;
+  overflow: hidden;
+}
+
+/* Dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  max-width: 800px;
+  z-index: 1;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero h2 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  animation: fadeInDown 1s ease forwards;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+/* — Intro Section — */
+.intro-section {
+  background-color: #ffffff;  /* set to white */
+  padding: 60px 20px;
+}
+
+.intro-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-section p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  position: relative;
+  padding-left: 30px;
+}
+
+/* Remove the accent bar if you like, or keep it */
+.intro-section p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+
+/* Accent bar on the left of the paragraph */
+.intro-section p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Emphasis tags styling */
+.intro-section strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.intro-section em {
+  font-style: italic;
+  color: var(--primary-dark);
+}
+
+/* Adjust animation timing */
+.intro-section.animated {
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .intro-section p {
+    font-size: 1rem;
+    padding-left: 20px;
+  }
+  .intro-section p::before {
+    width: 3px;
+  }
+}
+
+
+/* CTA adjustments */
+.cta-buttons {
+  animation: fadeInUp 1.4s ease forwards;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 14px 30px;
+}
+
+.btn-secondary {
+  margin-left: 10px;
+}
+
+/* Scroll‑down arrow */
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  animation: bounce 2s infinite;
+  z-index: 1;
+}
+
+/* Bounce keyframes */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* — Services Grid & Cards — */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background-color: #fff;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 25px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* Icon styling */
+.service-icon {
+  font-size: 36px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+/* Only show title initially */
+.service-card h3 {
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+/* Hidden description */
+.service-desc {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin: 0; /* reset */
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Reveal on hover */
+.service-card:hover .service-desc {
+  opacity: 1;
+  max-height: 200px;  /* enough for your text */
+  margin-top: 10px;
+}
+
+/* Mobile: stack */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* — About + Why Choose Us Enhanced — */
+.grid-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+/* — Blue About Us block with white text — */
+.about-info {
+  background: var(--primary-color); /* royal blue */
+  color: #ffffff;                   /* default text white */
+  padding: 35px;
+  border-radius: 8px;
+}
+
+/* Ensure headings and paragraphs inside are white */
+.about-info h2,
+.about-info p {
+  color: #ffffff;
+}
+
+/* Optional: lighten the paragraph slightly for readability */
+.about-info p {
+  opacity: 0.9;
+}
+
+/* Why Choose Us styling */
+.why-choose-enhanced h3 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Flex list of features */
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+}
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  width: calc(50% - 15px);
+}
+.feature-icon {
+  flex-shrink: 0;
+  width: 50px; height: 50px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  margin-right: 15px;
+}
+.feature-content h4 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  color: var(--text-color);
+}
+.feature-content p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Vertical divider between columns */
+.about-enhanced .grid-two-col::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: #ddd;
+  transform: translateX(-50%);
+}
+
+/* Ensure both cols stretch */
+.about-enhanced .grid-two-col > * {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .grid-two-col {
+    display: block;
+    position: static;
+  }
+  .about-enhanced .grid-two-col::before {
+    display: none;
+  }
+  .feature-item {
+    width: 100%;
+  }
+  .about-info, .why-choose-enhanced {
+    margin-bottom: 30px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
