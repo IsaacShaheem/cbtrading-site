@@ -68,11 +68,28 @@ body {
 
 /* === Hero Section === */
 .hero {
-  background: linear-gradient(rgba(44, 62, 145, 0.7), rgba(44, 62, 145, 0.7)), 
-              url('https://source.unsplash.com/1600x900/?global,trade') no-repeat center center/cover;
+  position: relative;
+  background: url("images/hero-bg.png") no-repeat center center/cover;
   color: white;
   padding: 120px 20px;
   text-align: center;
+  overflow: hidden;
+}
+
+/* Dark overlay for better contrast */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* adjust opacity to taste */
+  z-index: 0;
+}
+
+.hero h2,
+.hero p,
+.cta-buttons {
+  position: relative;
+  z-index: 1; /* keep text above overlay */
 }
 
 .hero h2 {
@@ -84,6 +101,7 @@ body {
   font-size: 20px;
   margin-bottom: 30px;
 }
+
 
 /* === CTA Buttons === */
 .cta-buttons {
