@@ -66,42 +66,6 @@ body {
   color: var(--primary-dark);
 }
 
-/* === Hero Section === */
-.hero {
-  position: relative;
-  background: url("images/hero-bg.png") no-repeat center center/cover;
-  color: white;
-  padding: 120px 20px;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Dark overlay for better contrast */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* adjust opacity to taste */
-  z-index: 0;
-}
-
-.hero h2,
-.hero p,
-.cta-buttons {
-  position: relative;
-  z-index: 1; /* keep text above overlay */
-}
-
-.hero h2 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
 
 /* === CTA Buttons === */
 .cta-buttons {
@@ -542,49 +506,96 @@ footer {
   }
 }
 
-/* — Hero Enhancements — */
+/* Fullscreen hero */
 .hero {
-  position: relative;
+  height: 90vh; /* Adjust this number to make it smaller or bigger */
+  min-height: 500px; /* Ensures it doesn’t get too short on small screens */
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  min-height: 80vh;
-  padding: 0 20px;
-  background: url('https://source.unsplash.com/1600x900/?global,trade') center/cover no-repeat fixed;
+  align-items: center;
   color: white;
-  overflow: hidden;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
 }
 
-/* Dark overlay */
+/* Mobile adjustments */
+@media (max-width: 576px) {
+  .hero {
+    height: 60vh;
+    min-height: 400px;
+  }
+}
+
+
+.hero h2 {
+  font-size: 4rem;   /* Large for desktop */
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+}
+
+.hero p {
+  font-size: 1.5rem; /* Large subheading for desktop */
+  margin-bottom: 30px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Tablet adjustments */
+@media (max-width: 992px) {
+  .hero h2 {
+    font-size: 3rem;
+  }
+  .hero p {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 576px) {
+  .hero h2 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+
+
+
+/* Two stacked background layers for cross-fade */
+.hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 900ms ease-in-out;
+  will-change: opacity;
+}
+
+/* Dark overlay for readability (on top of bg layers, below content) */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.hero-content {
-  position: relative;
-  text-align: center;
-  max-width: 800px;
+  background: rgba(0,0,0,.45);
   z-index: 1;
-  animation: fadeInUp 1s ease forwards;
 }
 
-.hero h2 {
-  font-size: 3.5rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-  animation: fadeInDown 1s ease forwards;
+/* Put text above everything */
+.hero-content, .scroll-down { position: relative; z-index: 2; }
+
+/* Visible slide */
+.hero .is-visible { opacity: 1; }
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-bg { transition: none; }
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  animation: fadeInUp 1.2s ease forwards;
-}
 
 /* — Intro Section — */
 .intro-section {
@@ -864,16 +875,3 @@ footer {
     margin-bottom: 30px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
